@@ -144,6 +144,6 @@ app.post('/image', (req, res) => {
     .catch(error => console.log('error', error));
 })
 
-app.listen(3001, () => {
+app.listen(5432, () => {
 	console.log('app is running on port 3001')
 })
