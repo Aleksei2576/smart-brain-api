@@ -53,10 +53,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-	res.json(PAT)
-})
-
 app.post('/signin', (req,res) => {
 	db.select('email', 'hash').from('login')
 		.where('email', '=', req.body.email)
@@ -137,7 +133,7 @@ app.put('/image', (req, res) => {
 })
 
 app.post('/image', (req, res) => {
-	const {input, data} = req.body;
+	const {input} = req.body;
 	fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnFaceBox(input))
     .then(response => response.json())
     .then(data => res.json(data))
