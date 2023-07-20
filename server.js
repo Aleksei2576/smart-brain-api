@@ -74,7 +74,9 @@ app.post('/signin', (req,res) => {
 		})
 	.catch(err => res.status(400).json('wrong credentials'))	
 })
-
+app.get('/', (req, res) => {
+  res.send('This is the homepage');
+});
 app.post('/register', (req, res) => {
 	const {name, email, password} = req.body;
 	const salt = bcrypt.genSaltSync(saltRounds);
