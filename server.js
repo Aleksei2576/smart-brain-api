@@ -136,8 +136,7 @@ app.put('/image', (req, res) => {
 
 app.post('/image', (req, res) => {
      const {input} = req.body;
-     res.json(input);
-    .catch(error => console.log('error', error));
+     res.json(input)
 })
 
 app.listen(5432, () => {
