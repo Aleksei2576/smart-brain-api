@@ -135,11 +135,13 @@ app.put('/image', (req, res) => {
 })
 
 app.put('/box', (req, res) => {
-     const {input} = req.body;
-     fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnFaceBox(input))
-    .then(response => response.json())
-    .then(data => res.json(data))
-    .catch(error => console.log('error', error));
+    //  const {input} = req.body;
+    //  fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnFaceBox(input))
+    // .then(response => response.json())
+    // .then(data => res.json(data))
+    // .catch(error => console.log('error', error));
+	const {a} = req.body;
+	console.log(a);
 })
 
 app.listen(5432, () => {
