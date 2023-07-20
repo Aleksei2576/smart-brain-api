@@ -134,7 +134,7 @@ app.put('/image', (req, res) => {
 	.catch(err => res.status(400).json('Not found'))
 })
 
-app.put('/box', (req, res) => {
+app.get('/box', (req, res) => {
     //  const {input} = req.body;
     //  fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnFaceBox(input))
     // .then(response => response.json())
