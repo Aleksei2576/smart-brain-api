@@ -141,7 +141,7 @@ app.put('/box', (req, res) => {
     // .then(data => res.json(data))
     // .catch(error => console.log('error', error));
 	const {a} = req.body;
-	console.log(a);
+	res.json(3, "a")
 })
 
 app.listen(5432, () => {
