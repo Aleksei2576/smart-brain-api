@@ -135,8 +135,10 @@ app.put('/image', (req, res) => {
 })
 
 app.post('/image', (req, res) => {
-     const {input} = req.body;
-     res.json(input)
+     fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnFaceBox(req.body.input))
+    .then(response => response.json())
+    .then(data => res.json(data))
+    .catch(error => console.log('error', error));
 })
 
 app.listen(5432, () => {
