@@ -135,10 +135,7 @@ app.put('/image', (req, res) => {
 })
 
 app.post('/image', (req, res) => {
-     fetch("https://swapi.dev/api/people/3")
-    .then(response => response.json())
-    .then(data => res.json(data))
-    .catch(error => console.log('error', error));
+     res.json('AAAAAAAAAAA');
 })
 
 app.listen(5432, () => {
