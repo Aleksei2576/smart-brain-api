@@ -5,37 +5,6 @@ const knex = require('knex');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-const PAT = '9b35a24d8d174e648eb033c6164a0acc';
-const USER_ID = 'aleksei';       
-const APP_ID = 'aleksei';
-
-function returnFaceBox(imgUrl){
-  const raw = JSON.stringify({
-          "user_app_id": {
-              "user_id": USER_ID,
-              "app_id": APP_ID
-          },
-          "inputs": [
-              {
-                  "data": {
-                      "image": {
-                          "url": imgUrl
-                      }
-                  }
-              }
-          ]
-      });
-
-    return {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
-        },
-        body: raw
-    };
-}
-
 const db = knex({
   client: 'pg',
   connection: {
@@ -132,17 +101,6 @@ app.put('/image', (req, res) => {
 		res.json(entries[0].entries)
 	})
 	.catch(err => res.status(400).json('Not found'))
-})
-
-function getFetch(input){
-    fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnFaceBox(input))
-    .then(response => response.json())
-    .then(data => {return data})
-    .catch(error => console.log('error', error));
-}
-
-app.post('/image', (req, res) => {
-    res.json(getFetch(req.body.input));
 })
 
 app.listen(5432, () => {
